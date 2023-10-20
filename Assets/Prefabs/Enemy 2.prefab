@@ -1192,12 +1192,12 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 20
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
@@ -1241,10 +1241,10 @@ MonoBehaviour:
   state: 0
   curHealth: 1
   maxHealth: 1
-  moveSpeed: 2.4
+  moveSpeed: 2.6
   curWaypoint: 0
   difficulty: 0
-  minDistance: 1
+  minDistance: 1.5
   isDead: 0
   dead: 0
   self: {fileID: 5533422267744871618}

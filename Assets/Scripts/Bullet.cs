@@ -5,9 +5,6 @@ public class Bullet : MonoBehaviour
     private Transform target;
     public TurretAI turretAI;
 
-    // public float speed;
-    // public float damage;
-
     public void Seek(Transform _target)
     {
         target = _target;

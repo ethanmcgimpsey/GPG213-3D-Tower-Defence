@@ -59,15 +59,10 @@ public class Enemy : MonoBehaviour
         agent.speed = moveSpeed;
         anim = self.GetComponent<Animator>();
         Walking();
-        anim.SetBool("Walking", false);
-        anim.SetBool("Die", false);
 
     }
     private void Update()
     {
-        anim.SetBool("Walking", false);
-        anim.SetBool("Die", false);
-
         Walking();
         Die();
     }
@@ -138,7 +133,6 @@ public class Enemy : MonoBehaviour
                 anim.SetTrigger("Die");
                 dead = true;
                 PlayerStats.Money += 14;
-                PlayerStats.Score += 7;
             }
             agent.destination = self.transform.position;
             // Drop Loot

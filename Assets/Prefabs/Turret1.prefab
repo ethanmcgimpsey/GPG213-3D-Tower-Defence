@@ -554,7 +554,7 @@ MonoBehaviour:
   range: 9
   bulletPrefab: {fileID: 2044112759983730596, guid: 92b12c213ef251a44bd0d270a3551675,
     type: 3}
-  fireRate: 2.5
+  fireRate: 1.7
   speed: 20
   damage: 0.1
   enemyTag: Enemy
