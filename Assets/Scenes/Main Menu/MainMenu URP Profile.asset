@@ -78,7 +78,7 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.047354277}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.05984647}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 1}
@@ -115,13 +115,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.8
   aperture:
     m_OverrideState: 1
     m_Value: 11.5
   focalLength:
     m_OverrideState: 1
-    m_Value: 57
+    m_Value: 50
   bladeCount:
     m_OverrideState: 0
     m_Value: 5

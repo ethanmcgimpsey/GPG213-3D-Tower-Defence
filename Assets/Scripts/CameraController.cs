@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Camera Movement")]
     public float panSpeed = 30f;
     public float panBorderThickness = 10f;
 
@@ -11,22 +12,28 @@ public class CameraController : MonoBehaviour
     public float minY = 10f;
     public float maxY = 80f;
 
+    [Header("Camera Playspace Area")]
+    public float minX;
+    public float maxX;
+    public float minZ;
+    public float maxZ;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("w"))
+        if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
             transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
         }
-        if (Input.GetKey("s"))
+        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
         {
             transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
         }
-        if (Input.GetKey("d"))
+        if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
         {
             transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
         }
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
         {
             transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
         }
@@ -37,6 +44,9 @@ public class CameraController : MonoBehaviour
 
         pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
+        
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
 
         transform.position = pos;
     }
