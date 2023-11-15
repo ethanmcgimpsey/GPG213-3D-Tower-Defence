@@ -11,7 +11,8 @@ public class WaveSpawner : MonoBehaviour
     {
         Spawning,
         Waiting,
-        Counting
+        Counting,
+        GameOver
     };
 
     [System.Serializable]
@@ -25,7 +26,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public Wave[] waves;
-    public int nextWave = 0;
+    public int currentWave;
     public Transform waypointParent;
     public GameObject completeLevelUI, finalWaveUI;
     public Text waveTextRound;
@@ -35,6 +36,7 @@ public class WaveSpawner : MonoBehaviour
     public float timeBetweenWaves = 5f;
     public float waveCountdown;
     public SpawnState state = SpawnState.Counting;
+    public bool updateWaveUI;
 
     [Header("Saving")]
     public string fileName = "GameSave";
@@ -57,15 +59,19 @@ public class WaveSpawner : MonoBehaviour
         Enemy enemy = GetComponent<Enemy>();
         waveCountdown = timeBetweenWaves;
         finalWaveUI.SetActive(false);
+        Time.timeScale = 1;
     }
 
     void SetWave(int waveIndex)
     {
-        nextWave = waveIndex;
-        nextWaveAudio.Play();
-        state = SpawnState.Counting;
+        if (!updateWaveUI)
+        {
+            nextWaveAudio.Play();
+            waveTextRound.text = "Wave: " + (currentWave + 1).ToString();
+            currentWave = waveIndex;
+        }
         waveCountdown = timeBetweenWaves;
-        waveTextRound.text = "Wave: " + (nextWave + 1).ToString();
+        state = SpawnState.Counting;
     }
 
     void Update()
@@ -80,9 +86,9 @@ public class WaveSpawner : MonoBehaviour
             else
             {
                 Debug.Log("Wave Completed");
-                nextWave++;
-                SetWave(nextWave);
-                waves[nextWave].index = nextWave;
+                currentWave++;
+                SetWave(currentWave);
+                waves[currentWave].index = currentWave;
                 // Save(fullPath, waves[nextWave]);
             }
         }
@@ -91,7 +97,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if(state != SpawnState.Spawning)
             {
-                StartCoroutine(SpawnWave(waves[nextWave]));
+                StartCoroutine(SpawnWave(waves[currentWave]));
             }
         }
         else
@@ -115,18 +121,21 @@ public class WaveSpawner : MonoBehaviour
         }
         */
 
-        if (nextWave == 4)
+        if (currentWave == 4)
         {
             finalWaveUI.gameObject.SetActive(true);
+            updateWaveUI = true;
             if (state == SpawnState.Spawning)
             {
                 finalWaveUI.gameObject.SetActive(false);
             }
         }
 
-        if (nextWave == 5)
+        if (currentWave >= 5)
         {
+            state = SpawnState.GameOver;
             completeLevelUI.SetActive(true);
+            Time.timeScale = 0;
         }
 
         if(PlayerStats.Lives <= 0)

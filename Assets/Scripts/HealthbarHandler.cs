@@ -7,7 +7,6 @@ public class HealthbarHandler : MonoBehaviour
 {
     public GameObject healthCanvas;
     public Image healthBar;
-
     private void LateUpdate()
     {
         if(healthBar.fillAmount < 1 && healthBar.fillAmount > 0)
