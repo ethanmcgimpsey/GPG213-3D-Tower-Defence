@@ -34,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
     // public Text score;
     public AudioSource nextWaveAudio;
     public AudioSource gameOverAudio;
-    public float timeBetweenWaves = 5f;
+    public float timeBetweenWaves;
     public float waveCountdown;
     public SpawnState state = SpawnState.Counting;
     public bool stopWaveUI;
@@ -58,7 +58,7 @@ public class WaveSpawner : MonoBehaviour
         }*/
 
         Enemy enemy = GetComponent<Enemy>();
-        waveCountdown = timeBetweenWaves;
+        waveCountdown = 10f;
         finalWaveUI.SetActive(false);
         Time.timeScale = 1;
     }
