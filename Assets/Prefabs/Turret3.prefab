@@ -850,7 +850,7 @@ MonoBehaviour:
   targetEnemy: {fileID: 2704718040102404275, guid: 76fa7f7e124bb294a8f0a1059fe2f589,
     type: 3}
   range: 20
-  bulletPrefab: {fileID: 2044112759983730596, guid: 12b72820a19cdcc43bea2033a9011631,
+  bulletPrefab: {fileID: 2515524718869099984, guid: 5859a99130704d24daf02f2d9a66dcfb,
     type: 3}
   fireRate: 0.3
   speed: 20

@@ -12,7 +12,8 @@ public class WaveSpawner : MonoBehaviour
         Spawning,
         Waiting,
         Counting,
-        GameOver
+        GameOver,
+        Win
     };
 
     [System.Serializable]
@@ -36,14 +37,14 @@ public class WaveSpawner : MonoBehaviour
     public float timeBetweenWaves = 5f;
     public float waveCountdown;
     public SpawnState state = SpawnState.Counting;
-    public bool updateWaveUI;
+    public bool stopWaveUI;
 
     [Header("Saving")]
     public string fileName = "GameSave";
 
     private string fullPath;
 
-    private float searchCountdown = 1f;
+    [SerializeField] private float searchCountdown = 1f;
 
 
     void Start()
@@ -64,7 +65,7 @@ public class WaveSpawner : MonoBehaviour
 
     void SetWave(int waveIndex)
     {
-        if (!updateWaveUI)
+        if (!stopWaveUI)
         {
             nextWaveAudio.Play();
             waveTextRound.text = "Wave: " + (currentWave + 1).ToString();
@@ -105,39 +106,42 @@ public class WaveSpawner : MonoBehaviour
             waveCountdown -= Time.deltaTime;
         }
 
-        /*
-        switch (nextWave)
+        
+        switch (currentWave)
         {
             case 4:
                 finalWaveUI.gameObject.SetActive(true);
+                stopWaveUI = true;
                 if (state == SpawnState.Spawning)
                 {
                     finalWaveUI.gameObject.SetActive(false);
                 }
                 break;
             case 5:
+                state = SpawnState.Win;
                 completeLevelUI.SetActive(true);
+                Time.timeScale = 0;
                 break;
         }
-        */
+        
 
-        if (currentWave == 4)
+        /*if (currentWave == 4)
         {
             finalWaveUI.gameObject.SetActive(true);
-            updateWaveUI = true;
+            stopWaveUI = true;
             if (state == SpawnState.Spawning)
             {
                 finalWaveUI.gameObject.SetActive(false);
             }
         }
 
-        if (currentWave >= 5)
+        if (currentWave == 5)
         {
             state = SpawnState.GameOver;
             completeLevelUI.SetActive(true);
             Time.timeScale = 0;
-        }
-
+        }*/
+        
         if(PlayerStats.Lives <= 0)
         {
             if (!gameOverAudio.isPlaying)

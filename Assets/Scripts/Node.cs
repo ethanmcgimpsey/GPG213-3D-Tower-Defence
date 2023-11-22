@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,6 +11,7 @@ public class Node : MonoBehaviour
 
     [Header("Optional")]
     public GameObject turret;
+    public int turretValue; 
     public TurretBlueprint turretBlueprint;
     public bool isUpgraded = false;
 
