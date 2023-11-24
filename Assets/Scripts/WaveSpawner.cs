@@ -109,7 +109,7 @@ public class WaveSpawner : MonoBehaviour
         
         switch (currentWave)
         {
-            case 4:
+            case 9:
                 finalWaveUI.gameObject.SetActive(true);
                 stopWaveUI = true;
                 if (state == SpawnState.Spawning)
@@ -117,7 +117,7 @@ public class WaveSpawner : MonoBehaviour
                     finalWaveUI.gameObject.SetActive(false);
                 }
                 break;
-            case 5:
+            case 10:
                 state = SpawnState.Win;
                 completeLevelUI.SetActive(true);
                 Time.timeScale = 0;

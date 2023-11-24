@@ -102,12 +102,12 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 9
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.333
   response:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   texture:
     m_OverrideState: 1

@@ -36,7 +36,7 @@ public class Settings : MonoBehaviour
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
+        // resolutionDropdown.RefreshShownValue();
     }
 
     // Update is called once per frame
