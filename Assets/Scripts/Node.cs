@@ -70,6 +70,7 @@ public class Node : MonoBehaviour
     {
         if (turret != null)
         {
+            Debug.Log("Trying to get turretBlueprint: " + turretBlueprint);
             PlayerStats.Money += turretBlueprint.GetSellAmount();
             Destroy(turret);
             turretBlueprint = null;
@@ -87,6 +88,7 @@ public class Node : MonoBehaviour
 
         GameObject _turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
         turret = _turret;
+        turretBlueprint = blueprint;
 
         Debug.Log("Turret build!");
     }
