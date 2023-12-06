@@ -12,7 +12,9 @@ public class Enemy : MonoBehaviour
         Die
     }
     public AIState state;
-    public float curHealth, maxHealth, moveSpeed;
+    public float curHealth = 1;
+    public float maxHealth = 1;
+    public float moveSpeed;
     public int curWaypoint, difficulty;
     public float minDistance = 2f;
     public bool isDead, dead;

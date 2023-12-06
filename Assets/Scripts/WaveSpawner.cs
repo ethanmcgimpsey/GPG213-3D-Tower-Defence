@@ -28,6 +28,7 @@ public class WaveSpawner : MonoBehaviour
 
     public Wave[] waves;
     public int currentWave;
+    public float addiotnalHealth;
     public Transform waypointParent;
     public GameObject completeLevelUI, finalWaveUI;
     public Text waveTextRound;
@@ -182,12 +183,27 @@ public class WaveSpawner : MonoBehaviour
         yield break;
     }
 
-    void SpawnEnemy(Transform _enemy)
+    void SpawnEnemy(Transform oldEnemyTransform)
     {
-        Debug.Log("Spawning Enemy: " + _enemy.name);
-        Transform clone = Instantiate(_enemy, transform.position, transform.rotation);
-        Enemy enemy = clone.GetComponent<Enemy>();
-        enemy.waypointParent = waypointParent;
+        Debug.Log("Spawning Enemy: " + oldEnemyTransform.name);
+        Enemy newEnemy = Instantiate(oldEnemyTransform, transform.position, transform.rotation).GetComponent<Enemy>();
+        //Enemy enemy = clone.GetComponent<Enemy>();
+        newEnemy.waypointParent = waypointParent;
+        // Add health on each wave
+        // Wave 1 zombies have 1 health
+        // Wave 2 zombies have 1.2 health
+        // Wave 2 zombies have 1.2 health
+        //
+        // Wave 1 zombie health = maxHealth + currentWave
+        //                      = 1         + 1           = 2
+        // Wave 2 zombie health = maxHealth + currentWave
+        //                      = 1         + 2           = 3
+        //
+        // Wave 2 zombie health should be 1.2 health
+        // Wave 3 zombie health should be 1.4 health
+
+        newEnemy.maxHealth += ((float)currentWave / 5);
+        newEnemy.curHealth = newEnemy.maxHealth;
     }
 
 

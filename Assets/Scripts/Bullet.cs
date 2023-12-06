@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
         {
             Enemy enemy = other.GetComponent<Enemy>();
             enemy.curHealth -= turretAI.damage;
-            enemy.healthBar.fillAmount = enemy.curHealth;
+            enemy.healthBar.fillAmount = enemy.curHealth / enemy.maxHealth;
             if (enemy.curHealth <= 0)
             {
                 enemy.isDead = true;
