@@ -28,7 +28,6 @@ public class WaveSpawner : MonoBehaviour
 
     public Wave[] waves;
     public int currentWave;
-    public float addiotnalHealth;
     public Transform waypointParent;
     public GameObject completeLevelUI, finalWaveUI;
     public Text waveTextRound;
